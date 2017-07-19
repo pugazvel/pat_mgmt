@@ -1,0 +1,60 @@
+<div ng-controller="examController">
+	<div>
+		<h3>{{title}}</h3>
+	</div>
+	<form id="edit-profile" novalidate name="addPatientForm"
+		autocomplete="off" class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">Patient Name</label>
+				<div class="controls">
+					<label>{{patient.name}}</label>
+				</div>
+				<!-- /controls -->
+			</div>
+			<!-- /control-group -->
+			<div class="control-group">
+				<label class="control-label">Institution</label>
+				<div class="controls">
+					<label>{{patient.institution.name}}</label>
+				</div>
+				<!-- /controls -->
+			</div>
+			<!-- /control-group -->
+		</fieldset>
+	</form>
+	<div class="pull-right">
+		<a><button class="btn  btn-success" ng-click="newExamDialog()">Add</button></a>
+	</div>
+	<div class="widget widget-table action-table">
+		<div class="widget-header">
+			<i class="icon-th-list"></i>
+			<h3>Exams</h3>
+		</div>
+		<!-- /widget-header -->
+		<div class="widget-content">
+			<div style="overflow-x: scroll;">
+				<!-- /form-actions -->
+				<table ng-table="examList" show-filter="true"
+					class="table table-striped table-bordered">
+					<tr ng-repeat="exam in $data">
+						<td data-title="'Name'" sortable="'name'"
+							filter="{ 'name': 'text' }">{{exam.examName}}</td>
+						<td data-title="'Exam Date'" sortable="'examDate'"
+							filter="{ 'dob': 'text' }">{{exam.examDate | date:'dd-MM-yyyy'}}</td>
+						<td data-title="'Height'" sortable="'height'"
+							filter="{ 'height': 'text' }">{{exam.height}}</td>
+						<td data-title="'Weight'" sortable="'weight'"
+							filter="{ 'weight': 'text' }">{{exam.weight}}</td>
+						<td data-title="'Action'"><a><button
+									class="btn  btn-success" ng-click="editExamDialog(exam)">Edit</button></a></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+		<!-- /widget-content -->
+	</div>
+		<!-- /widget -->
+
+</div>

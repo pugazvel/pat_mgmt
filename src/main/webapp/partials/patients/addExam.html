@@ -1,0 +1,76 @@
+<div>
+	<div>
+		<h3>{{title}}</h3>
+	</div>
+					<form id="edit-profile" novalidate name="addExamForm"
+						autocomplete="off" class="form-horizontal">
+						<fieldset>
+
+							<div class="control-group">
+								<label class="control-label" for="name">Exam Name<sup>*</sup></label>
+								<div class="controls">
+									<input name="name" placeholder="Exam Name"
+										ng-model="exam.examName" required /><span
+										style="color: red"
+										ng-show="addExamForm.name.$dirty && addExamForm.name.$invalid">
+										<span ng-show="addExamForm.name.$error.required">Exam
+											Name is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="role">Exam Date</label>
+								<div class="controls">
+									<input type="text" data-date-format="dd/mm/yyyy"
+										placeholder="mm/dd/yyyy" id="examDate"
+										ng-model="exam.examDate" />
+									<script>
+														$(function() {
+															$('#examDate').fdatepicker({
+																closeButton : false
+															});
+														});
+													</script>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="height">Height</label>
+								<div class="controls">
+									<input name="height" placeholder="Height"
+										ng-model="exam.height"/>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="weight">Weight</label>
+								<div class="controls">
+									<input name="weight" placeholder="Weight"
+										ng-model="exam.weight"/>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+
+							<div ng-if="errorMsg">
+								<span style="color: red">{{errorMsg}}</span>
+							</div>
+							<div class="form-actions">
+								<button type="button" class="btn btn-primary"
+									ng-disabled="addExamForm.$invalid"
+									ng-click="addOrUpdateExam()">Save</button>
+							</div>
+							<!-- /form-actions -->
+						</fieldset>
+					</form>
+
+				</div>

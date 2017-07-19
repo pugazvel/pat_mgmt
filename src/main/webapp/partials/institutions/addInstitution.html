@@ -1,0 +1,36 @@
+<div>
+	<div>
+		<h3>{{title}}</h3>
+	</div>
+					<form id="edit-profile" novalidate name="addInstitutionForm"
+						autocomplete="off" class="form-horizontal">
+						<fieldset>
+
+							<div class="control-group">
+								<label class="control-label" for="name">Institution Name<sup>*</sup></label>
+								<div class="controls">
+									<input name="name" placeholder="Institution Name"
+										ng-model="institution.name" required /><span
+										style="color: red"
+										ng-show="addInstitutionForm.name.$dirty && addInstitutionForm.name.$invalid">
+										<span ng-show="addInstitutionForm.name.$error.required">Institution
+											Name is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+
+							<div ng-if="errorMsg">
+								<span style="color: red">{{errorMsg}}</span>
+							</div>
+							<div class="form-actions">
+								<button type="button" class="btn btn-primary"
+									ng-disabled="addInstitutionForm.$invalid"
+									ng-click="addOrUpdateInstitution()">Save</button>
+							</div>
+							<!-- /form-actions -->
+						</fieldset>
+					</form>
+
+				</div>

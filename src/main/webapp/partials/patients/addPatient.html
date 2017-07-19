@@ -1,0 +1,102 @@
+<div>
+	<div>
+		<h3>{{title}}</h3>
+	</div>
+					<form id="edit-profile" novalidate name="addPatientForm"
+						autocomplete="off" class="form-horizontal">
+						<fieldset>
+
+							<div class="control-group">
+								<label class="control-label" for="name">Patient Name<sup>*</sup></label>
+								<div class="controls">
+									<input name="name" placeholder="Patient Name"
+										ng-model="patient.name" required /><span
+										style="color: red"
+										ng-show="addPatientForm.name.$dirty && addPatientForm.name.$invalid">
+										<span ng-show="addPatientForm.name.$error.required">Patient
+											Name is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+
+							<div class="control-group">
+								<label class="control-label" for="patientId">Patient ID<sup>*</sup></label>
+								<div class="controls">
+									<input name="patientId" ng-disabled="patient.id" placeholder="Patient ID"
+										ng-model="patient.patientId" required /><span
+										style="color: red"
+										ng-show="addPatientForm.patientId.$dirty && addPatientForm.patientId.$invalid">
+										<span ng-show="addPatientForm.patientId.$error.required">Patient
+											ID is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="role">Institution<sup>*</sup></label>
+								<div class="controls">
+									<select name="institution" ng-model="patient.institution.id"
+										required>
+										<option ng-repeat="inst in instList" value="{{inst.id}}">{{inst.name}}</option>
+									</select><span style="color: red"
+										ng-show="addPatientForm.institution.$dirty && addPatientForm.institution.$invalid">
+										<span ng-show="addPatientForm.institution.$error.required">
+											Institution is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="role">Gender<sup>*</sup></label>
+								<div class="controls">
+									<select name="gender" ng-model="patient.gender"
+										required>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select><span style="color: red"
+										ng-show="addPatientForm.gender.$dirty && addPatientForm.gender.$invalid">
+										<span ng-show="addPatientForm.gender.$error.required">
+											Gender is required.</span>
+									</span>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+							
+							<div class="control-group">
+								<label class="control-label" for="role">DOB</label>
+								<div class="controls">
+									<input type="text" data-date-format="dd/mm/yyyy"
+										placeholder="mm/dd/yyyy" id="patientDob"
+										ng-model="patient.dob" />
+									<script>
+														$(function() {
+															$('#patientDob').fdatepicker({
+																closeButton : false
+															});
+														});
+													</script>
+								</div>
+								<!-- /controls -->
+							</div>
+							<!-- /control-group -->
+
+							<div ng-if="errorMsg">
+								<span style="color: red">{{errorMsg}}</span>
+							</div>
+							<div class="form-actions">
+								<button type="button" class="btn btn-primary"
+									ng-disabled="addPatientForm.$invalid"
+									ng-click="addOrUpdatePatient()">Save</button>
+							</div>
+							<!-- /form-actions -->
+						</fieldset>
+					</form>
+
+				</div>
